@@ -6,7 +6,7 @@ Soon...
 npm i rehype-figure-for-img
 ```
 
-# What is is this?
+# What is this?
 
 rehpye plugin replace [rehype-figure](https://github.com/josestg/rehype-figure) plugin.
 

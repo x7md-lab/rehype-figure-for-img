@@ -10,7 +10,7 @@ import {visit} from 'unist-util-visit'
 import {isElement} from 'hast-util-is-element'
 import replaceExt from 'replace-ext'
 
-const own = {}.hasOwnProperty
+//const own = {}.hasOwnProperty
 
 /**
  * @type {import('unified').Plugin<[Options?] | Array<void>, Root>}
@@ -49,7 +49,7 @@ export default function rehypeFigureForImg(options) {
               properties: {},
               children: nodes.concat({
                 type: 'text',
-                value: node.properties.alt
+                value: 
               })
             },
           ]

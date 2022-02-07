@@ -49,7 +49,7 @@ export default function rehypeFigureForImg(options) {
               properties: {},
               children: nodes.concat({
                 type: 'text',
-                value: 
+                value: node.properties.alt
               })
             },
           ]

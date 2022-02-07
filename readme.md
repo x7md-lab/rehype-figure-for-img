@@ -20,16 +20,16 @@ because it don't work ~~*at lest with me*~~.
 ```js
 ...
 markdownOptions: {
-		render: [
-		'@astrojs/markdown-remark',
-		{
+    render: [
+	    '@astrojs/markdown-remark',
+		    {
             rehypePlugins: [
                 ...
                 // add this
                 ['rehype-figure-for-img'],
             ]
-		},
-		],
+		    },
+	],
 	}
 ...
 ```

@@ -34,7 +34,7 @@ export default function rehypeFigureForImg(options) {
       const nodes = []
       /** @type {string} */
       let key
-
+      node["loading"] = "lazy"
       /** @type {Element} */
       const replacement = {
         type: 'element',

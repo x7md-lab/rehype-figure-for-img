@@ -1,6 +1,6 @@
 {
   "name": "rehype-figure-for-img",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "rehype plugin to wrap img tags inside figure tag",
   "license": "MIT",
   "keywords": [

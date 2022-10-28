@@ -56,4 +56,5 @@ markdown: {
 ...
 ```
 
-- `allImages`: by default the plugin will only wrap figures around images with a caption, this adds the ability to add figures around all images (and add captions to any that have them)
+- `allImages`: (`false`) by default the plugin will only wrap figures around images with a caption, this adds the ability to add figures around all images (and add captions to any that have them)
+- `useTitle`: (`false`) by default the plugin will use the alt text as the caption, you can change this to use the title instead

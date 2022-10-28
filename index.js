@@ -17,6 +17,7 @@ import replaceExt from 'replace-ext'
  */
 export default function rehypeFigureForImg(options) {
   const settings = options || {}
+  const captionProperty = settings?.useTitle ? 'title' : 'alt'
 
   return (tree) => {
     visit(tree, 'element', (node, index, parent) => {
@@ -28,7 +29,7 @@ export default function rehypeFigureForImg(options) {
           !node.properties
         ) ||
         (
-          !node.properties.title &&
+          !node.properties[captionProperty] &&
           !settings?.allImages
         )
       ) {
@@ -47,7 +48,7 @@ export default function rehypeFigureForImg(options) {
         properties: {},
       }
 
-      if (node.properties.title) {
+      if (node.properties[captionProperty]) {
         replacement.children = nodes.concat(
           [
             node,
@@ -57,7 +58,7 @@ export default function rehypeFigureForImg(options) {
               properties: {},
               children: nodes.concat({
                 type: 'text',
-                value: node.properties.title
+                value: node.properties[captionProperty]
               })
             },
           ]

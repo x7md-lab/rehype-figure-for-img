@@ -6,8 +6,8 @@
  * @typedef {Record<string, Sources>} Options
  */
 
-import {visit} from 'unist-util-visit'
-import {isElement} from 'hast-util-is-element'
+import { visit } from 'unist-util-visit'
+import { isElement } from 'hast-util-is-element'
 import replaceExt from 'replace-ext'
 
 //const own = {}.hasOwnProperty
@@ -21,11 +21,16 @@ export default function rehypeFigureForImg(options) {
   return (tree) => {
     visit(tree, 'element', (node, index, parent) => {
       if (
-        !parent ||
-        typeof index !== 'number' ||
-        !isElement(node, 'img') ||
-        !node.properties ||
-        !node.properties.alt
+        (
+          !parent ||
+          typeof index !== 'number' ||
+          !isElement(node, 'img') ||
+          !node.properties
+        ) ||
+        (
+          !node.properties.title &&
+          !settings?.allImages
+        )
       ) {
         return
       }
@@ -40,7 +45,10 @@ export default function rehypeFigureForImg(options) {
         type: 'element',
         tagName: 'figure',
         properties: {},
-        children: nodes.concat(
+      }
+
+      if (node.properties.title) {
+        replacement.children = nodes.concat(
           [
             node,
             {
@@ -49,9 +57,16 @@ export default function rehypeFigureForImg(options) {
               properties: {},
               children: nodes.concat({
                 type: 'text',
-                value: node.properties.alt
+                value: node.properties.title
               })
             },
+          ]
+        )
+      }
+      else {
+        replacement.children = nodes.concat(
+          [
+            node,
           ]
         )
       }
